@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ChaiCraft — Tea Simulator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="card">
+      <h1>ChaiCraft ☕</h1>
+      <p class="lead">A playful tea-making simulation — answer questions, adjust sliders, and sip your creation.</p>
+
+      <!-- Step 1: Question Form -->
+      <div id="page-questions" class="page active">
+        <div class="question">
+          <label>Your name:</label>
+          <input id="userName" type="text" placeholder="e.g., Aadi" />
+        </div>
+
+        <div class="question">
+          <label>Preferred tea type:</label>
+          <select id="teaType">
+            <option>Masala Chai</option>
+            <option>Green Tea</option>
+            <option>Black Tea</option>
+            <option>Herbal</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>Add milk?</label>
+          <select id="milkChoice">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>Preferred spice:</label>
+          <select id="spice">
+            <option>Cardamom</option>
+            <option>Ginger</option>
+            <option>Cinnamon</option>
+            <option>None</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>Brewing time preference:</label>
+          <select id="brewTime">
+            <option>Short (1-2 min)</option>
+            <option>Medium (3-4 min)</option>
+            <option>Long (5+ min)</option>
+          </select>
+        </div>
+
+        <div class="controls">
+          <button id="startSliders">Next: Adjust Ingredients</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Sliders -->
+      <div id="page-input" class="page">
+        <div class="row">
+          <div class="inputGroup">
+            <label>Sugar (spoons) <small class="muted">(<span id="sugarVal">2</span>)</small></label>
+            <input id="sugar" type="range" min="0" max="10" value="2" />
+          </div>
+
+          <div class="inputGroup">
+            <label>Tea leaves (spoons) <small class="muted">(<span id="teaVal">2</span>)</small></label>
+            <input id="tea" type="range" min="0" max="8" value="2" />
+          </div>
+
+          <div class="inputGroup">
+            <label>Water (ml) <small class="muted">(<span id="waterVal">250</span> ml)</small></label>
+            <input id="water" type="range" min="100" max="500" step="10" value="250" />
+          </div>
+
+          <div class="inputGroup">
+            <label>Milk (ml) <small class="muted">(<span id="milkVal">100</span> ml)</small></label>
+            <input id="milk" type="range" min="0" max="300" step="10" value="100" />
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="makeBtn">Make Tea!</button>
+          <button id="randomize" class="ghost">Randomize</button>
+        </div>
+
+        <div id="inputFeedback" class="feedback" style="display:none; margin-top:14px;"></div>
+      </div>
+
+      <!-- Step 3: Review -->
+      <div id="page-review" class="page">
+        <div class="center">
+          <div class="badge">Recipe Review</div>
+          <h2 id="reviewText">—</h2>
+        </div>
+
+        <div class="controls">
+          <button id="nextToSip">Next: Sip?</button>
+          <button id="backToInput" class="ghost">Back</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Sip -->
+      <div id="page-sip" class="page">
+        <div class="center">
+          <div class="badge">Sip Time</div>
+          <h2 id="sipQuestion">Do you want to sip your tea now?</h2>
+          <div class="cupWrap">
+            <div class="cup">
+              <div class="steamLayer">
+                <div id="steam" class="steam">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feedback" id="sipFeedback" style="display:none"></div>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:14px;">
+          <button id="yesBtn">Yes</button>
+          <button id="noBtn" class="ghost">No</button>
+        </div>
+
+        <div style="text-align:center; margin-top:12px;">
+          <button id="toRating" class="ghost" style="display:none">How was it?</button>
+          <button id="restart" class="ghost" style="display:none">Make another tea</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Rating -->
+      <div id="page-rating" class="page">
+        <div class="center">
+          <div class="badge">Rating</div>
+          <h2 id="ratingPrompt">How was the tea?</h2>
+          <div style="display:flex; gap:8px; justify-content:center; margin-top:10px;">
+            <button data-rate="bad" class="ghost">Yuck 🤮</button>
+            <button data-rate="meh" class="ghost">Okay 😐</button>
+            <button data-rate="good">Perfect 😋</button>
+          </div>
+          <p id="ratingResult" style="margin-top:12px"></p>
+          <div style="margin-top:10px;">
+            <button id="finish" class="ghost">Finish</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
