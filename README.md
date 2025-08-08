@@ -1,58 +1,62 @@
-# MY CHAI 🎯
+# ☕ Tea-Making Interactive Web App
 
-## Teasing Chai Wala
+An interactive, humorous tea-making simulation where the user makes tea step-by-step, receives witty feedback from a chai wala (tea master), and experiences playful animations like steam cooling before sipping.
 
-*Team Name:* Catalyst Crew  
+---
+
+## 🎯 Basic Details
+
+**Project Name:** Tea-Making Interactive Web App  
+**Team Name:** [Your Team Name]  
 
 ### Team Members
-- *Team Lead:* Deepak P V - College of Engineering, Trikaripur  
-- *Member 2:* Aadith Pacheni - College of Engineering, Trikaripur
+- **Team Lead:** Deepak PV - College of Engineering
+- **Member 2:**  Aadith Pacheni - College of Engineering
 
 ---
 
-## Project Description
-MY CHAI is a website which lets you chat with a chai wala, who he will be the one choosing what you want
+## 📜 Project Description
+
+A gamified tea-making experience:
+- Users choose tea type, milk, spice, sugar, and brew time.
+- A chai wala character teases the user with humorous responses from the database or AI.
+- Brewing and cooling animations make the experience engaging.
+- Includes a branching story mode and conversation loop.
 
 ---
 
-## The Problem (that doesn't exist)
-Teaching everyone how much they have to improve in their tea making skills
+## 🛠 Technologies Used
+
+### For Software
+- **Languages:** HTML, CSS, JavaScript
+- **Libraries:** None (vanilla JS) + OpenRouter AI API
+- **Tools:** Browser-based runtime
 
 ---
 
-## The Solution (that nobody asked for)
-We made a chai wala who can not only teach you but also tease you. I suppose its gonna be friendly.
+## 🔄 Workflow
 
----
+### Description
+1. User starts a new conversation or tea-making session.
+2. System shows first question or brewing option.
+3. User selects an option / adjusts sliders.
+4. App checks inputs and responds with chai wala’s witty comment.
+5. Brewing animation plays (steam effect).
+6. Cooling logic waits before sipping.
+7. User sips tea and rates experience.
+8. Option to restart conversation or tea-making process.
 
-## Technical Details
-
-### Technologies/Components Used
-
-#### For Software:
-- *Languages used:* HTML,CSS,JS 
-- *Frameworks used:* React  
-- *Libraries used:* React built in libraries  
-- *Tools used:* npm, VS code, GitHub, etc.   
-
----
-
-## Implementation
-
-### For Software:
-
-# Diagram
+### Diagram (Mermaid Example)
 
 ```mermaid
 flowchart TD
-    Start([Start Conversation]) --> Q1[Show First Question from DB]
-    Q1 --> U1[User Sends Reply]
-    U1 --> Fetch[Fetch teasing reply from DB based on input]
-    Fetch --> ShowReply[Display Chai Wala's teasing response]
-    ShowReply --> NextQ[Load next question from DB]
-    NextQ --> Limit{Conversation limit reached?}
-    Limit -- No --> U1
-    Limit -- Yes --> EndChat[End Conversation: Show restart option]
-    EndChat --> Restart{Start new conversation?}
+    Start([Start Conversation]) --> Q1[Show First Question or Tea Option]
+    Q1 --> UserChoice[User makes a choice / adjusts sliders]
+    UserChoice --> Check[Validate input & get witty reply]
+    Check --> Brew[Play brewing animation + steam effect]
+    Brew --> Cool[Wait for cooling time]
+    Cool --> Sip[User sips tea]
+    Sip --> Rate[User rates the tea]
+    Rate --> Restart{Restart?}
     Restart -- Yes --> Q1
-    Restart -- No --> Stop([Conversation Over])
+    Restart -- No --> End([End Session])
